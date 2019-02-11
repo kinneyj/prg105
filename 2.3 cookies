@@ -1,0 +1,13 @@
+#  User input
+num_cookies = float(input('How many cookies do you want to make? '))
+
+# Variables
+sugar = (1.5 / 48) * num_cookies
+butter = (1 / 48) * num_cookies
+flour = (2.75 / 48) * num_cookies
+
+#  Print out
+print('To make ' + str(num_cookies) + ', you will need:')
+print('\t' + format(sugar, ',.2f') + ' cups of sugar.')
+print('\t' + format(butter, ',.2f') + ' cups of butter.')
+print('\t' + format(flour, ',.2f') + ' cups of flour.')
