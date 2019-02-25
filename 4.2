@@ -8,14 +8,15 @@ The output should be displayed in a dollar amount, not the number of pennies.
 
 """
 
-
+#
 days = int(input('Enter number of days you\'ve worked:  '))
 penny = 0.005
+count = 1
 
 for i in range(1, days + 1):
     penny *= 2
-    print("You earned ", format(penny * i, ".2f"), "amount in pennies today! \nI hope you're proud.\n")
-
+    print(count, '\t', format(penny, ".2f"), "amount in pennies today! \n\tI hope you're proud.\n")
+    count = count + 1
 
 # If i forget to mention this in class I turned in chapter 4 exercises with 2 'valid' outputs for the if and else,
 # sorry!
