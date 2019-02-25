@@ -1,0 +1,46 @@
+"""
+A mobile phone service provider has three different subscription packages for its customers:
+
+Package A:	For $39.99 per month 450 minutes are provided. Additional minutes are $0.45 per minute.
+
+Package B:	For $59.99 per month 900 minutes are provided. Additional minutes are $0.40 per minute.
+
+Package C:	For $69.99 per month unlimited minutes provided.
+Write a program that calculates a customer's monthly bill.
+
+It should ask which package the customer has purchased and how many minutes were used.
+
+It should then display the total amount due. Use a dollar sign and two decimal places for currency.
+
+"""
+# initialize variables
+cost = 0
+error_st = ''
+
+# input package type and minutes used
+type_package = input('what type of package do you have? (a,b,c):   ')
+rate_minutes = int(input('How many minutes have you used?:   '))
+
+# nested if function will sort package fee
+if type_package == 'a':
+    if rate_minutes <= 450:
+        cost = 39.99
+    else:
+        cost = round(39.99 + (rate_minutes - 450) * 0.45, 2)    # this charges extra if client goes over minute limit
+elif type_package == 'b':
+    if rate_minutes <= 900:
+        cost = 59.99
+    else:
+        cost = round(59.99 + (rate_minutes - 900) * 0.40, 2)    # this charges extra if client goes over minute limit
+elif type_package == 'c':                                       # C has unlimited minutes
+    cost = 69.99
+
+# error message if invalid
+else:
+    error_st = 'Package type not recognized, please try again. '
+
+# the output and also a error check
+if error_st == '':
+    print('Your monthly fee is $' + str(cost))
+else:
+    print(error_st)
