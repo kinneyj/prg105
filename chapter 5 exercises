@@ -223,10 +223,3 @@ def addme(arg1, arg2):
 a = addme(1,2)
 
 print(a)
-
-
-
-def addme2(arg1, arg2):
-    print(arg1 + arg2)
-
-b = addme2(1,2)
