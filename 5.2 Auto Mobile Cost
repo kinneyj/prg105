@@ -1,0 +1,61 @@
+"""
+Write a program that asks the user to enter the monthly costs for the following expenses incurred from operating
+his or her automobile: loan payment, insurance, gas, and maintenance.
+The program should then display the total monthly cost of these expenses,
+and the total annual cost of these expenses.
+
+main(): 3
+
+# calls the other functions
+# main is traditionally used as the first function in a program to organize the flow of the program logic
+
+monthly():  1
+
+# Gather information from the user
+# Accumulate the total in a local variable
+# Print the monthly costs on screen, formatted appropriately for money
+# Pass the monthly cost to Function 2
+
+yearly(monthly_total):  2
+
+# Accepts a float parameter
+# Calculates yearly cost by multiplying the monthly cost by 12
+# Displays the yearly cost on screen, formatted appropriately for money
+
+output:
+How much do you pay for your car loan each month? 423.00
+How much do you pay for your car insurance each month? 89
+How much do you spend on gas each month? 80
+What is the average amount you spend on maintenance monthly? 60
+You spend $652.00 on your car each month.
+You spend $7,824.00 per year on your car.
+"""
+
+
+# make a program that an individual can enter a temperature in Celsius and can get it back in Farhenheight.
+# allow them to enter in as many temperatures as they need (question and answer in a loop)
+
+# this is the main func but I really don't understand this exercise, there is so many ways to do this
+# and seems useless to use 3 functions like this.
+
+# input and math for monthly that spits out the output
+def main():
+    loan_month = float(input('How much do you pay for your car loan each month?  '))
+    insurance_month = float(input('how much do you pay for insurance each month?    '))
+    gas_month = float(input('How much do you spend on gas monthly? '))
+    maintenance_month = float(input('whats you\'re average monthly maintenance     '))
+    month_total = (loan_month + insurance_month + gas_month + maintenance_month)
+    monthly(month_total)
+    yearly(month_total)
+
+# this is the print for monthly
+def monthly(month_total):
+    print('\nyour total monthly cost is: ${:.2f}'.format(month_total))
+
+# this is the math to get years and the print
+def yearly(month_total):
+    year_total = float(12) * float(month_total)
+    print('\nyour total yearly cost is: ${:.2f}'.format(year_total))
+
+# output
+main()
