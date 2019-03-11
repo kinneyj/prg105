@@ -1,0 +1,63 @@
+"""
+Write a program using multiple functions
+Pass parameters
+Return values
+Write a program that asks a user to enter five test scores. You will need to create five variables to hold these scores.
+
+The purpose of this assignment is to get practice passing information between functions,
+this is not a good example of the way programs are really written,
+but it will help you to understand how to pass parameters.
+
+Hint: if you have your mouse pointer at the end of a line you would like to copy,
+Ctrl + d on windows or cmd + d on a mac will duplicate the line.
+main -
+
+asks the user for each of the five test scores, stores them in separate variables (score1, score2, etc)
+calls calc_average and passes the five variables, storing the result in a variable
+average = calc_average(score1, score2, score....
+calls determine_grade, passing it the average variable, storing the result in a variable
+prints the letter grade
+calc_average -
+
+This function should accept the five test scores as arguments
+returns the average of the scores.
+determine_grade -
+
+This function should accept the average of the test scores as an argument
+returns a letter grade based on the following scale:
+
+"""
+
+
+# assign variables
+def main():
+    score1 = float(input("Enter your first score:   "))
+    score2 = float(input("Enter your second score:   "))
+    score3 = float(input("Enter your third score:   "))
+    score4 = float(input("Enter your fourth score:   "))
+    score5 = float(input("Enter your fifth score:   "))
+    grade_average(score1, score2, score3, score4, score5)
+
+
+# get average
+def grade_average(score1, score2, score3, score4, score5):
+    average = (score1 + score2 + score3 + score4 + score5) / 5
+    print('\n', '-' * 20, '\nyour average score was:  ', average)
+    grade_calc_score(average)
+
+
+# determine test score in text
+def grade_calc_score(average):
+    if average >= 90:
+        print('your final grade is an A')
+    elif average >= 80:
+        print('your final grade is a B')
+    elif average >= 70:
+        print('your final grade is a C')
+    elif average >= 60:
+        print('your final grade is a D')
+    else:
+        print('your final grade is an F')
+
+
+main()
