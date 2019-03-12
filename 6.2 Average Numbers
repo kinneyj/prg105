@@ -1,0 +1,31 @@
+import math
+"""
+Read in lines from a file
+Convert lines to numbers
+Total, average, and count
+
+Use the numbers.txtPreview the document file for this assignment.
+Write a program that uses the numbers.txt file, which contains a series of integers.
+Your program will calculate the average of all of the numbers stored in the file and display the total on the screen.
+Format to show a maximum of two numbers to the right of the decimal point.
+
+"""
+# open text file
+number_file = open('numbers.txt', 'r')
+# initialized variables and a nice 'separator'
+equal = '============================'
+count = 0
+total = 0
+
+for line in number_file:
+    a = int(line.strip())
+    if a != "":
+        print(a)
+        total += a
+        count += 1
+# variable output
+print(equal + '\nTotal amount of numbers:   ' + str(total) + '\nTotal amount of rows:   ' + str(count) + '\n' + equal)
+print('Total Average is: ', math.ceil(total / count), '\n', '=' * 26)
+# close text file
+number_file.close()
+
