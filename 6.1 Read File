@@ -1,0 +1,25 @@
+"""
+Open files
+Read in lines from files
+Count lines in files
+Close files
+
+Your Python file will:
+Read and Display the list of names from the file
+Display the number of names that are read from the file (You will need a variable to keep a count of the number of items read from the file.)
+"""
+
+# open name file
+names_file = open('names.txt', 'r')
+line = names_file.readline()
+# initialize count
+count = 0
+
+# loop pulls from names.txt outputs text and counts total amount
+while line != '':
+    print(line)
+    count += 1
+    line = names_file.readline()
+print("total amont of names is:  ", count)
+# close name.txt file
+names_file.close()
