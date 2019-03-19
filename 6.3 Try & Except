@@ -1,0 +1,40 @@
+"""
+Use try and except statements
+Check for IO errors
+Check for value errors
+
+Copy your file from the previous exercise (Average numbers) and modify it so that it handles the following exceptions:
+
+It should handle any IOError exceptions that are raised when the file is opened and data is read from it.
+It should handle any ValueError exceptions that are raised
+when the items that are read from the file are converted to a number.
+"""
+import math
+
+# open text file
+number_file = open('numbers.txt', 'r')  
+
+# initialized variables and a nice 'separator'
+equal = '============================'
+count = 0
+total = 0
+
+# I used a for statement instead of a read function so my IO error isn't functional while using the instructions
+try:
+    for line in number_file:
+        a = int(line.strip())
+        if a != "":
+            print(a)
+            total += a
+            count += 1
+except ValueError:
+    print('Could not find ' + number_file)
+except IOError:
+    print('This line is not a Number in ' + number_file)
+
+
+# variable output
+print('', equal, '\nTotal amount of numbers:', total, '\nTotal amount of rows:   ', count, '\n', equal)
+print('Total Average is: ', math.ceil(total / count), '\n', equal)
+# close text file
+number_file.close()
