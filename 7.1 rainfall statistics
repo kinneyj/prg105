@@ -1,0 +1,37 @@
+"""
+Creating lists
+Processing lists
+Finding min and max values
+Finding and using index values
+Copy program 4.3 into the chapter 7 folder and rename it as "7-1-Rainfall-Statistics"
+
+Modify the program so that the rainfall for each month is stored into a list.
+Eliminate the user's ability to select the number of years, you will just work with one year's data.
+The program should calculate and display the total rainfall for the year, the average monthly rainfall the year,
+and the months with the highest and lowest amounts of rain for the year.
+Hint: convert months to a list so you can use the index value to print the max and min months.
+"""
+
+
+average = 0
+rain_month = []
+rain_year = []
+years = int(input('How many years of rain are you recording:    '))
+
+for yearly in range(1, years + 1):
+    print('=' * 55)
+    for month in range(1, 13):
+        rain_month.append((float(input('Enter the total rainfall of ONE of the recorded month:   '))))
+        average = float(sum(rain_month) / len(rain_month))
+
+
+if years <=1:
+    print('=' * 55, '\nThe average rainfall in the past year was: ', format(average, ',.1f'))
+    print('The maximum amount of rainfall in the past year was: ', format(max(rain_month), ',.1f'))
+    print('The minimum amount of rainfall in the past year was: ', format(min(rain_month), ',.1f'))
+    print('the index value of september is:  ', rain_month[8])
+else:
+    print('=' * 55, '\nThe average rainfall in the past years was: ', format(average, ',.1f'))
+    print('The maximum amount of rainfall in the past years was: ', format(max(rain_month), ',.1f'))
+    print('The minimum amount of rainfall in the past years was: ', format(min(rain_month), ',.1f'))
+    print('the index value of the first year of september is:  ', rain_month[8])
