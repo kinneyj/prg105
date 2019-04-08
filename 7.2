@@ -1,0 +1,75 @@
+"""
+Pass and return lists
+
+use for loops for processing lists
+
+Have a function that creates a list of 20 random integers between 1 and 100
+(Assign them dynamically, store the list in a variable.)
+
+Have a function get a number from the user that is between 1 and 100
+(validate to ensure a number between 1 and 100 was entered instead of text
+or something out of range using a try and except statement).
+
+Pass both the list and the user's number to a function
+and have it display all numbers in the list that is greater than the user's number.
+If there are not any, display a message that explains there are no numbers in the list greater than the entered number.
+ """
+
+import random
+
+
+# create random list of numbers
+def random_list(number_of_items):
+    random_nums = []
+    for x in range(number_of_items):
+        num = random.randint(1, 100)
+        random_nums.insert(0, num)
+    return random_nums
+
+
+# gets user number
+def user_num():
+    user_input = 0
+    x = 0
+    while user_input == 0:
+        x += 1
+        user_input = num_request(x)
+        if user_input < 1 or user_input > 100:
+            user_input = 0
+    return user_input
+
+
+# works with user_num in conjuction
+def num_request(outcome):
+    if outcome == 1:
+        text = 'Enter a number between 1 and 100: '
+    else:
+        text = 'Your entry was either not a number or not between 1 and 100.\nplease try again.'
+    try:
+        user_input = int(input(text))
+    except ValueError:
+        user_input = 0
+    return user_input
+
+
+# determines when number is greater 
+def determine_greater_number(numlist, user_input):
+    x = 0
+    for item in numlist:
+        if item > user_input:
+            x += 1
+            if x == 1:
+                print('following numbers are greater than your number')
+                print(item)
+    if x == 0:
+        print('there are no numbers greater than yours.')
+
+
+# the main function
+def main():
+    main_list = random_list(20)
+    user_input = user_num()
+    determine_greater_number(main_list, user_input)
+
+
+main()
