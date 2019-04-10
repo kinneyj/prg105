@@ -1,0 +1,39 @@
+"""
+Read files into lists
+Strip \n from file values
+
+Search for values in listsThen, write a program that reads the contents of the two files into two separate lists.
+The user should be able to enter a boy's name or a girl's name. The application should check both lists,
+and then display messages indicating whether the names were among the most popular
+if the name was on one of the lists or that the name was not on the lists of popular names.
+"""
+
+
+def main():
+    girl_names = []
+    boy_names = []
+    girl_in_file = open('GirlNames.txt', 'r')
+    boy_in_file = open('BoyNames.txt', 'r')
+
+    for girl in girl_in_file:
+        girl_in_line = girl.rstrip('\n').lower()
+        girl_names.append(girl_in_line)
+
+    for boy in boy_in_file:
+        boy_in_line = boy.rstrip('\n')
+        boy_names.append(boy_in_line)
+
+    girl_in_file.close()
+    boy_in_file.close()
+
+    user_name = input('Enter a name: ')
+
+    if user_name in girl_names:
+        print(user_name + " is one of the most popular names for a girl")
+    elif user_name in boy_names:
+        print(user_name + " is one of the most popular names for a boy")
+    else:
+        print('u did it wrong')
+
+
+main()
