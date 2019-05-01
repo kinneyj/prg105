@@ -1,0 +1,42 @@
+"""
+Use the .upper function
+Use loops with strings
+Use lists with strings
+Write a program that lets the user enter a string and displays the letter that appears most frequently in the string.
+Ignore spaces, punctuation, and uppercase vs lowercase.
+
+Hints:
+
+Create a list to hold letters based on the length of the user input
+Convert all letters to the same case
+Use a loop to check for each letter in the alphabet (create an alphabet list and step through it)
+Have a variable to hold the largest number of times a letter appears, and replace the value when a higher number is found
+"""
+
+
+def main():
+    user_input = input('Enter a set of letters with no numbers: ')
+    alphabet = ('A', 'B', 'C', 'D', 'C', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q',
+                'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z')
+    # initialize variables
+    count = 0
+    common = 0
+    letter_common = ''
+    # counts to find most common letter
+    for i in alphabet:
+        for x in user_input:
+            if x.upper() == i:
+                count += 1
+        if count == common:
+            letter_common += i + ''
+            common = count
+        elif count > common:
+            common = count
+            letter_common = i
+        count = 0
+    # ouput of common letter and amount of times found in string
+    print('most common letter is:   ' + letter_common)
+    print('The most common letter appears ', common, 'times')
+
+
+main()
