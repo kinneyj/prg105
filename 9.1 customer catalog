@@ -1,0 +1,109 @@
+"""
+Write a CRUD - Create, Read, Update, Delete application
+Pickle files and save them
+Unpickle and save into data structures
+
+Write a program that keeps names and email addresses in a dictionary as key-value pairs.
+The program should display a menu that lets the user look up a person's email address,
+add a new name and email address, change an existing email address, and delete an existing name and email address.
+The program should pickle the dictionary and save it to a file when the user exits the program.
+Each time the program starts, it should retrieve the dictionary from the file and unpickle it.
+
+ """
+
+import pickle
+
+
+# main opens customer file and determines user choice
+def main():
+    try:
+        email_file = open('customer_file.dat', 'rb')
+        customer = pickle.load(email_file)
+    except(FileNotFoundError, IOError):
+        print('try another name.')
+        customer = {}
+    menu(customer)
+
+
+# menu select prompt
+def menu(customer):
+    print('Customer Email Catalog')
+    print('=' * 35)
+    print('1. Look up customer')
+    print('2. Add a new customer')
+    print('3. Change existing customer info')
+    print('4. Delete customer')
+    print('5. Quit')
+
+    choice = int(input('Enter a number to select an option: '))
+
+    while choice < 1 or choice > 5:
+        print('The number you selected is invalid, try again.')
+        break
+    if choice == 1:
+        look_up(customer)
+    elif choice == 2:
+        add(customer)
+    elif choice == 3:
+        change(customer)
+    elif choice == 4:
+        delete(customer)
+    elif choice == 5:
+        save(customer)
+
+    return customer, choice
+
+
+# 1. look up customer
+def look_up(customers):
+    name = input('Enter desired name:   ')
+    if name in customers:
+        print('Your customer name is:  ' + name + "\n Customer phone number is: " + customers[name])
+
+    else:
+        print('not found')
+
+
+# 2. add customer
+def add(customers):
+    name = input('Enter new name:   ')
+    phone = input('Enter new phone number:  ')
+    if name not in customers:
+        customers[name] = phone
+        save(customers)
+    else:
+        print('this name is already on file. ')
+
+
+# 3. change customer info.
+def change(customers):
+    name = input('\nEnter desired name: ')
+    if name in customers:
+        name = input('\nEnter customers new name:    ')
+        phone = input('\nEnter customers new number:    ')
+        customers[name] = phone
+        customers[phone] = name
+        save(customers)
+    else:
+        print("Not found")
+
+
+# 4. delete customer
+def delete(customers):
+    name = input('\nEnter desired name: ')
+    if name in customers:
+        del customers[name]
+        save(customers)
+    else:
+        print('name not found')
+
+
+# 5. quit and save function
+def save(customers):
+    print("The data file has been updated with your changes.")
+    file_save = open('customer_file.dat', 'wb')
+    pickle.dump(customers, file_save)
+    file_save.close()
+
+
+main()
